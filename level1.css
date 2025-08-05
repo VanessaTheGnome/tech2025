@@ -1,0 +1,265 @@
+/* Applied to both <html> and <body> */
+/* Removes the default margin and padding to ensure the game takes up the whole screen */
+/* Has full screen sizing and a scroll bar to ensure consistency across different browsers */
+html, body { 
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #14161d #1F232D; /* Dark themed scroll bar to remain consistent with the theme */
+}
+
+/* Main body layout for Level 1 */
+/* Uses a themed background that visually represents the Easy Level */
+/* flex is used to centre and stack elements vertically, making it reliable across screen sizes */
+body {
+    background-image: url(easylevel.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+    background-position: center;
+    width: 100vw;
+    display: flex;
+    font-family: "Garamond";
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+
+}
+
+/* The title ("Easy Difficulty) is positioned at the top centre of the screen for easy visibility */
+h1 {
+    margin-top:0px;
+    position: absolute;
+    top: 5px;
+    font-weight: 700;
+    font-size: 40px;
+    color: rgb(8, 103, 59); /* The colour of the title further visually represents the Easy Level */
+    outline: auto;
+    outline-style:groove;
+    background-color: rgba(0, 0, 0, 0.429); /* Adds a subtle semi-transparent black background behind the title, which makes it easier to read*/
+}
+
+/* The Score is displayed in the bottom left of the screen and updates in real-time */
+/* Its position and font size are consistent with the timer, which creates a clear UI */
+p {
+    position: absolute;
+    bottom: 35px;
+    left: 30px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+  }
+
+/* The timer is displayed in the top left of the screen, easy to view */
+/* The timer has a fixed position meaning it will be visible regarding the screen size */
+.time {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+  }
+
+/* The home button is displayed in the top right of the screen, where it is easy to view */
+/* The home button has a fixed position meaning it will be visible regarding the screen size */
+.homeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+
+/* The restart button is in the lower left of the screen, below the Score */
+/* It is positioned separatly from the home button to avoid misclicks */
+.actions {
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+}
+
+/* Shared button style for all the buttons in the level, keeps the style consistent */
+/* Uses a dark theme to match the theme and remain consistent with the game */
+.homeBtn button, .actions button {
+    background-color: rgb(41, 46, 58);
+    border: 2px solid rgb(31, 34, 42);
+    border-radius: 8px;
+    font-weight: 550;
+    color: aliceblue;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Garamond";
+}
+
+/* When the User's cursor hovers over the button it becomes darker, this improves accessibility and gives visual confirmation */
+button:hover {
+    border-color: rgb(26, 29, 37);
+    background-color: rgb(31, 35, 45);
+    color: white;
+}
+/* The main grid that contains all the cards */
+/* Uses 2 columns x 4 rows to display the 8 cards (4 pairs) */
+/* By using 'vmin' it makes sure that it adapts to various screen sizes */
+.gridContainer {
+  display: grid;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  width: min(40vmin, 100vw);
+  height: min(100vmin, 100vh);
+  margin-top: 60px;
+
+}
+/* Each card is able to flip using a 3:4 aspect ratio */
+/* 'transform-style: preserve-3d' for 3D flipping and 'transition' for smooth transitions */
+.card {
+  height: calc(75px / 2 * 3);
+  min-width: 75px;
+  max-width: 150px;
+  min-height: 80px;
+  max-height: 150px;
+  aspect-ratio: 3 /4;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Ensures that the image on the card fits inside the card without being distorted */
+.frontImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+
+/* When a card is flipped it rotates 180 degrees */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Both the front and the back of the cards share the same styles */
+/* They are positioned absolutely meaning the stack */
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    border-radius: 10px;
+    border-color: black;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Front side of the card once it is flipped */
+/* The background of the card is black to contrast with the image and to match the game theme */
+.card .front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  transform: rotateY(180deg);
+}
+
+/* The backside of the card is shown initially */
+/* Uses SVG as the decorative pattern on the card, the SVG colour matches with the colour of the title, therefore matching the easy level theme */
+.card .back {
+  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='80' height='46.185' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='%23000000ff'/><path d='M0 .002V13.63l9.87-5.69L21.944.975l7.373 4.239C19.536 10.843 9.782 16.503 0 22.135v24.05h.842V23.557l.145-.087C10.71 17.868 20.436 12.266 30.13 6.664v8.476c-4.006 2.35-8.041 4.673-12.076 6.995-3.28 1.887-6.56 3.803-9.869 5.69v18.359H9.87v-6.022a1928.14 1928.14 0 0 1 10.396 6.023h3.338l-1.659-.972c-4.005-2.323-8.04-4.645-12.075-6.967V29.74l28.45 16.445h3.389c9.454-5.482 18.938-10.963 28.421-16.444v8.505a4590.557 4590.557 0 0 1-12.076 6.967l-1.63.972h3.285v-.016c3.483-2.004 6.966-4.006 10.421-6.01v6.024h1.684v-18.36l-6.01-3.483-3.86-2.206a2547.983 2547.983 0 0 1-12.076-6.996V6.662c9.754 5.631 19.536 11.263 29.29 16.894v22.627H80v-24.05L50.682 5.211 58.055.972 70.131 7.94 80 13.63V0h-.842v11.22l-7.344-4.24V0h-1.683v6.023L59.735 0h-3.36l-8.189 4.717v25.37l-7.344 4.238V.48l.146-.087L41.63 0h-3.26l.788.48v33.845l-7.344-4.238V4.717l-6.008-3.454L23.653 0h-3.387L9.87 6.023V0H8.186v6.982L.842 11.22V0zm30.13 17.083v12.017l-10.42-6.009c3.483-2.003 6.966-4.006 10.42-6.008zm19.74 0c3.483 2.002 6.937 4.005 10.42 6.008l-10.42 6.009zm-31.814 6.967 12.075 6.995 9.87 5.69 9.868-5.69 12.076-6.995 7.373 4.237c-9.782 5.66-29.317 16.924-29.317 16.924L10.683 28.289z'  stroke-width='1' stroke='none' fill='%2308673bff'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+  background-position: center;
+  background-size: contain;
+  backface-visibility: hidden;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* Each popup is initially hidden */
+/* Position fixed ensures that the popups are always centred */
+.popupFail, .popupAgain, .popupWin {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* Each popup shares the same style for its content, this ensures consistency throughout the game */
+/* Uses large texts, buttons, and clear contrast making it easier to understand */
+.popupContent {
+    background-color: rgb(31, 35, 45);
+    color: aliceblue;
+    margin: 10% auto;
+    padding: 20px;
+    height: 200px;
+    width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    font-family: "Garamond";
+    outline: auto;
+    outline-style: solid;
+    outline-color: rgb(255, 255, 255);
+}
+
+/* The popup text is centered making it easier to read */
+.popupContent p {
+  position: relative;
+  text-align: center;
+  left: 1px;
+  top: 1px;
+}
+
+/* Shared style for each result button, which maintains a consistent UI */
+.buttonFail, .buttonAgain, .buttonAdvance, .buttonWin {
+    background-color: rgb(41, 46, 58);
+    border: 2px solid rgb(31, 34, 42);
+    border-radius: 10px;
+    font-family: "Garamond";
+    font-weight: 550;
+    color: aliceblue;
+    padding: 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Hover styling relates to the button's purpose using colour conventions:
+  - Red = Fail
+  - Blue = Try Again
+  - Green = Win */
+/* Makes it more visually pleasing and aesthetic */
+.buttonFail:hover {
+    border-color: rgb(26, 29, 37);
+    background-color: rgb(31, 35, 45);
+    color: rgb(114, 18, 18);
+}
+.buttonAgain:hover {
+    border-color: rgb(26, 29, 37);
+    background-color: rgb(31, 35, 45);
+    color: rgb(18, 103, 194);
+}
+.buttonAdvance:hover {
+    border-color: rgb(26, 29, 37);
+    background-color: rgb(31, 35, 45);
+    color: rgb(8, 103, 59);
+}
+.buttonWin:hover {
+    border-color: rgb(26, 29, 37);
+    background-color: rgb(31, 35, 45);
+    color: rgb(8, 103, 59);
+}
+/* Allows users to manually close the popup */
+/* It is displayed in the top right of the popup and is coloured white, making it stand out and easy to see */
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}  

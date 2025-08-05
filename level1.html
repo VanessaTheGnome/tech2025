@@ -1,0 +1,67 @@
+<!--This HTML file creates the Easy difficulty level of the Game
+    I chose to create different files for each level so that I can incorporate different settings like time, score and layout more easily-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1</title>
+    <!--External link to the CSS layout, which styles the page according to the Easy level-->
+    <link rel="stylesheet" type="text/css" href="level1.css">
+</head>
+<body>
+    <!--Displays the Title of the Level to inform the users which level they are on-->
+    <h1> Easy Difficulty</h1>
+    <!--A 30-second timer that limits gameplay, increases pressure, and increases user engagement-->
+    <p class="time" id="timer">Time: 30</p>
+    <!--The main game grid where the memory cards are generated and displayed-->
+    <div class="gridContainer"></div>
+    <!--The score that updates every time the user attempts to match a pair-->
+    <p>Score: <span class="score"></span></p>
+    <!--The restart button which allows users to quickly restart the game without having to return back to the menu-->
+    <div class="actions">
+        <button onclick="restart()">Restart</button>
+    </div>
+    <!--Home button which takes the user back to the Main Menu-->
+    <div id="homeBtnContainer" class="homeBtn">
+        <button id="homeBtn">Return Home</button>
+    </div>
+    <!--The Popup displayed when users fail with a high score-->
+    <div id="popupFail" style="display: none;" class="popupFail">
+        <div class="popupContent">
+            <span class="closeBtn" id="closePopupFail">&times;</span>
+            <p>You need to think much harder</p>
+            <!--The Try Again button because the user had failed the game, and has to restart-->
+            <button id="buttonFail" class="buttonFail">Try Again</button>
+        </div>
+    </div>
+    <!--The Popup displayed when the user gets an average score-->
+    <div id="popupAgain" style="display: none;" class="popupAgain">
+        <div class="popupContent">
+            <span class="closeBtn" id="closePopupAgain">&times;</span>
+            <p>You need more practice</p>
+            <!--The Try Again button because they performed at an average level-->
+            <button id="buttonAgain" class="buttonAgain">Try Again</button> <br>
+            <!--The Advance button because they had an average score and if they wanted to challenge themselves-->
+            <button id="buttonAdvance" class="buttonAdvance">Advance to the next Level</button>
+        </div>
+    </div>
+    <!--The Popup displayed when users win with a low score-->
+    <div id="popupWin" style="display: none;" class="popupWin">
+        <div class="popupContent">
+            <span class="closeBtn" id="closePopupWin">&times;</span>
+            <p>Congratulations! <br>
+                You can advance to the next level</p>
+            <!--The Advance button because they did very well-->
+            <button id="buttonWin" class="buttonWin">Advance to the next Level</button>
+        </div>
+    </div>
+    <!--The audios for different outcomes in the game: Win, Average, or Fail-->
+    <audio id="winSound" src="Win.mp3"></audio>
+    <audio id="againSound" src="Again.mp3"></audio>
+    <audio id="failSound" src="Fail.mp3"></audio>
+
+    <!--Link to Level 1's JavaScript-->
+    <script src="level1.js"></script>
+</body>
+</html>

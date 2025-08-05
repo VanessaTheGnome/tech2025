@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Vault</title>
+    <!--Links to external CSS for styling and menu layout-->
+    <link rel="stylesheet" type="text/css" href="menu.css">
+</head>
+<body>
+    <!--Grid container for the entire page-->
+    <div class="bodyGrid">
+        <!--Title of the Game-->
+        <header>
+            The Royal Vault
+        </header>
+        <!--Menu Layout which contains the buttons for starting the game and reading the instructions-->
+        <div class="btnGrid">
+            <!--Play button which opens the Popup with the different Level buttons-->
+            <button id="openPlayBtn">Play</button>
+            <!--The popup which allows users to select different game difficulties (Easy, Medium, Hard)-->
+            <div id="playPopup" class="popup">
+                <!--Displays the different game levels-->
+                <div class="popupContent">
+                    <span class="closeBtn" id="closePlayPopupBtn">&times;</span>
+                    <h1>Levels</h1>
+                    <div class="levelGrid">
+                        <!--The Easy/Medium/Hard Level buttons-->
+                        <button id="easyBtn" class="easyBtn">Easy</button>
+                        <button id="mediumBtn" class="mediumBtn">Medium</button>
+                        <button id="hardBtn" class="hardBtn">Hard</button>
+                    </div>
+                </div>
+            </div>
+            <!--Button to open the "How To Play" Instructions-->
+            <button id="openPopupBtn">How To Play</button>
+            <!--Instructions Popup-->
+            <div id="popup" class="popup">
+                <!--Displays game instructions in a scrollable popup for first-time users or those who need help-->
+                <div class="popupContent instructionsContent">
+                    <span class="closeBtn" id="closePopupBtn">&times;</span>
+                    <!--Explaining what the game is, how to play, the goal, and why it was created-->
+                    <h1>How to play The Royal Vault</h1>
+                    <h2>What is it?</h2>
+                    <h3>The Royal Vault is a memory game</h3>
+                    <h3>There are 3 different levels: Easy, Medium, Hard</h3>
+                    <h3>The number of cards displayed increases as the difficulty increases</h3>
+                    <h2>How to Play</h2>
+                    <h3>There are flipped cards displayed on each level</h3>
+                    <h3>To flip a card you click on it</h3>
+                    <h3>You flip 2 cards and if they are a pair they remain flipped</h3>
+                    <h3>If they are not a pair they flip back over</h3>
+                    <h3>The score increases for every pair that is flipped</h3>
+                    <h3>There is a timer every game</h3>
+                    <h3>Every correct pair increases the timer by 3 seconds</h3>
+                    <h2>Aim of the Game</h2>
+                    <h3>The goal of the game is to get the lowest score</h3>
+                    <h3>Depending on the Level the score for a Win varies</h3>
+                    <h3>If the timer runs out, the game ends and you Lose</h3>
+                    <div class="easy">
+                        <h2>Easy Level</h2>
+                        <h3>Win: 4-7 | Average: 8-10 | Lose: 11+ | Timer: 30 seconds</h3>
+                    </div>
+                    <div class="medium">
+                        <h2>Medium Level</h2>
+                        <h3>Win: 8-14 | Average: 15-22 | Lose: 23+ | Timer: 35 seconds</h3>
+                    </div>
+                    <div class="hard">
+                        <h2>Hard Level</h2>
+                        <h3>Win: 12-22 | Average: 23-32 | Lose: 32+ | Timer: 50 seconds</h3>
+                    </div>
+                    <h2>Reasoning behind the Game</h2>
+                    <h3>Nowadays our attention span has shortened</h3>
+                    <h3>And our memory has become worse over the years</h3>
+                    <h3>To help improve our memory I have developed a memory game to try to help with this problem</h3>
+                    <h6>Created by Vanessa Gomes</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Link to the Javascript file-->
+    <script src="index.js"></script>
+</body>
+</html>

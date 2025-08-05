@@ -1,0 +1,161 @@
+/* The background for the whole page*/
+/* The image is scaled and in the centre to then fit all screen sizes */
+body {
+    background-image: url(throne_w_blue.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bodyGrid {
+    display: grid;
+    grid-template-rows: repeat(3);
+    gap: 150px;
+}
+header {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: aliceblue;
+    font-size: xxx-large;
+    font-family: "Garamond";
+    font-weight: 600;
+}
+/* Contrasts with the background colours to make it easier to notice */
+button {
+    background-color: rgb(41, 46, 58);
+    border: 2px solid rgb(31, 34, 42);
+    border-radius: 10px;
+    font-family: "Garamond";
+    font-weight: 550;
+    color: aliceblue;
+    padding: 15px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* When the user's cursor hovers over any button the button will darken */
+/* This clearly shows the user which button they are going to click and gives visual confirmation */
+button:hover {
+    border-color: rgb(26, 29, 37);
+    background-color: rgb(31, 35, 45);
+    color: white;
+}
+/* Hover styling refers to the difficulty in level using colour conventions:
+    - Green = Easy
+    - Gold = Medium
+    - Red = Hard
+/* When the user's cursor hovers over the "Easy" button in the Play Menu it changes colour representing the difficulty of the level */
+/* Helps the users visually differentiate between Easy, Medium, and Hard */
+.easyBtn:hover {
+    border-color: rgb(8, 103, 59);
+    background-color: rgb(31, 35, 45);
+    color: rgb(8, 103, 59);
+}
+/* When the user's cursor hovers over the "Medium" button in the Play Menu it changes colour representing the difficulty of the level */
+/* Helps the users visually differentiate between Easy, Medium, and Hard */
+.mediumBtn:hover {
+    border-color: rgb(194, 139, 18);
+    background-color: rgb(31, 35, 45);
+    color: rgb(194, 139, 18);
+}
+/* When the user's cursor hovers over the "Hard" button in the Play Menu it changes colour representing the difficulty of the level */
+/* Helps the users visually differentiate between Easy, Medium, and Hard */
+.hardBtn:hover {
+    border-color: rgb(114, 18, 18);
+    background-color: rgb(31, 35, 45);
+    color: rgb(114, 18, 18);
+}
+/* Displays the "How to Play" and "Play" buttons in the menu in 2 rows on top of each other */
+.btnGrid {
+    display: grid;
+    grid-template-rows: repeat(2) auto;
+    gap: 50px;
+}
+/* Styles the popup which allows the user to choose the game difficulty or read the instructions */
+/* The popup is initially hidden until it is triggered, where it then appears in the centre of the screen */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+}
+/* The popup uses a dark theme that contrasts with the brighter background and allows users to focus more on the content inside */
+.popupContent {
+    background-color: rgb(31, 35, 45);
+    color: aliceblue;
+    margin: 10% auto;
+    padding: 20px;
+    width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    font-family: "Garamond";
+    outline: auto;
+    outline-style:solid;
+    outline-color: rgb(23, 26, 33);
+}
+/* Outlines the headings and uses brighter colours to emphasise the heading */
+/* This emphasis allows the user to know what they are reading */
+.popupContent h2 {
+    color: rgb(18, 103, 194);
+    outline: auto;
+    outline-style:groove;
+    outline-color: rgb(10, 54, 101);
+}
+.popupContent h3 {
+    text-align: start;
+    padding-left: 10px;
+    font-weight: 100;
+}
+/* Outlines the headings with the colour representing the difficiulty level */
+/* This emphasises the rules below each heading */
+.easy h2{
+    color: rgb(8, 103, 59);
+    outline: auto;
+    outline-style:groove;
+    outline-color: rgb(8, 103, 59);
+}
+
+.medium h2{
+    color: rgb(194, 139, 18);
+    outline: auto;
+    outline-style:groove;
+    outline-color: rgb(194, 139, 18);
+}
+.hard h2{
+    color: rgb(114, 18, 18);
+    outline: auto;
+    outline-style:groove;
+    outline-color: rgb(114, 18, 18);
+}
+
+/* Adds a slider to the Instructions Popup so that the user can scroll down to see the rest of the information */
+.instructionsContent {
+    max-height: 69vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #14161d #1F232D;
+}
+/* Designs the close button, and is white to stand out and make it easier for the user to locate */
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+/* Displays the Different Level buttons in 3 rows on top of one another */
+.levelGrid {
+    display: grid;
+    grid-template-rows: repeat(3) auto;
+    gap: 50px;
+}
